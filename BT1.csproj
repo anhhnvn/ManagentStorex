@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D2F3F13-CE5D-4CB2-9E87-70677E0F9EF8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BT1</RootNamespace>
+    <AssemblyName>BT1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class_Customers.cs" />
+    <Compile Include="Class_DailySale.cs" />
+    <Compile Include="Class_Employees.cs" />
+    <Compile Include="Class_MonthlyProfit.cs" />
+    <Compile Include="Class_Products.cs" />
+    <Compile Include="Class_PurchaseHistory.cs" />
+    <Compile Include="class_Roles.cs" />
+    <Compile Include="Class_Users.cs" />
+    <Compile Include="DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees.Designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Customers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Customers.Designer.cs">
+      <DependentUpon>Form_Customers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DailySale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DailySale.Designer.cs">
+      <DependentUpon>Form_DailySale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MonthlyProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MonthlyProfit.Designer.cs">
+      <DependentUpon>Form_MonthlyProfit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_PurchaseHistorys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_PurchaseHistorys.Designer.cs">
+      <DependentUpon>Form_PurchaseHistorys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Roles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Roles.Designer.cs">
+      <DependentUpon>Form_Roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KetNoi.cs" />
+    <Compile Include="Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrangChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrangChu.Designer.cs">
+      <DependentUpon>TrangChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DangNhap.resx">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Customers.resx">
+      <DependentUpon>Form_Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DailySale.resx">
+      <DependentUpon>Form_DailySale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_MonthlyProfit.resx">
+      <DependentUpon>Form_MonthlyProfit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_PurchaseHistorys.resx">
+      <DependentUpon>Form_PurchaseHistorys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Roles.resx">
+      <DependentUpon>Form_Roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TrangChu.resx">
+      <DependentUpon>TrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
