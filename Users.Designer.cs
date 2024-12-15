@@ -41,6 +41,8 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,12 +161,30 @@
             this.dataGridView3.TabIndex = 14;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(149, 141);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(324, 22);
+            this.txtPassword.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "PasswordHash";
+            // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1098, 904);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSearch);
@@ -202,5 +222,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label3;
     }
 }

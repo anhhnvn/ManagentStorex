@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace BT1
                 // Kiểm tra xem Username đã tồn tại chưa
                 if (users.CheckUsernameExists(username))
                 {
-                    MessageBox.Show("Username đã tồn tại. Vui lòng chọn Username khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("already exists, please select another Username..", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -39,13 +40,13 @@ namespace BT1
 
                 // Thêm người dùng mới
                 users.Add_User(username, passwordHash, roleId);
-                MessageBox.Show("Thêm người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Add user successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadUsers();
                 ClearInputFields();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi thêm người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"error while adding user: {ex.Message}", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -69,22 +70,37 @@ namespace BT1
         {
             try
             {
+                // Lấy thông tin người dùng từ các TextBox
                 int userId = int.Parse(txtUserID.Text.Trim());
                 string username = txtUsername.Text.Trim();
                 int roleId = int.Parse(txtRoleID.Text.Trim());
 
-                // Tạo mật khẩu mới cho người dùng
-                string passwordHash = "newPassword"; // Bạn có thể thay đổi mật khẩu này
+                // Kiểm tra nếu người dùng nhập mật khẩu mới hay không
+                string password = string.Empty;
+                if (!string.IsNullOrEmpty(txtPassword.Text.Trim()))
+                {
+                    // Nếu có mật khẩu mới, sử dụng mật khẩu mới nhập vào
+                    password = txtPassword.Text.Trim();
+                }
+                else
+                {
+                    // Nếu không có mật khẩu mới, giữ nguyên mật khẩu cũ từ cơ sở dữ liệu
+                    password = GetCurrentPassword(userId); // Phương thức này để lấy mật khẩu cũ
+                }
 
-                // Cập nhật thông tin người dùng
-                users.Update_User(userId, username, passwordHash, roleId);
-                MessageBox.Show("Cập nhật thông tin người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadUsers();
-                ClearInputFields();
+                // Cập nhật thông tin người dùng (bao gồm tên, mật khẩu và quyền)
+                users.Update_User(userId, username, password, roleId);
+
+                // Thông báo thành công và cập nhật lại danh sách người dùng
+                MessageBox.Show("Update information user successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadUsers();  // Cập nhật lại danh sách người dùng (giả sử bạn đã có phương thức này)
+                ClearInputFields(); // Xóa các trường nhập liệu sau khi cập nhật
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi cập nhật người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Hiển thị lỗi nếu có vấn đề trong quá trình cập nhật
+                MessageBox.Show($"An error occurred while updating users: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
        
@@ -105,13 +121,13 @@ namespace BT1
 
                 // Xóa người dùng
                 users.Delete_User(userId);
-                MessageBox.Show("Xóa người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Delete user successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadUsers();
                 ClearInputFields();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi xóa người dùng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error while deleting user: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -125,5 +141,23 @@ namespace BT1
                 txtRoleID.Text = row.Cells["RoleID"].Value.ToString();
             }
         }
+        public string GetCurrentPassword(int userId)
+        {
+            string password = string.Empty;
+            string sql = "SELECT PasswordHash FROM Users WHERE UserID = @UserID";
+
+            SqlCommand cmd = new SqlCommand(sql, kn.conn);
+            cmd.Parameters.AddWithValue("@UserID", userId);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                password = reader["PasswordHash"].ToString(); // Lấy mật khẩu cũ từ cơ sở dữ liệu
+            }
+            reader.Close();
+
+            return password;
+        }
+
     }
 }

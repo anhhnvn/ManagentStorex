@@ -45,12 +45,12 @@ namespace BT1
 
                 kn.Execute(cmd); // Thực thi câu lệnh SQL
 
-                MessageBox.Show("Thêm thành công!");
+                MessageBox.Show("Add successfully!");
                 btnLoad.PerformClick(); // Load lại dữ liệu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("error: " + ex.Message);
             }
         }
 
@@ -75,12 +75,12 @@ namespace BT1
 
                 kn.Execute(cmd); // Thực thi câu lệnh SQL
 
-                MessageBox.Show("Cập nhật thành công!");
+                MessageBox.Show("Update successfully!");
                 btnLoad.PerformClick(); // Load lại dữ liệu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -96,12 +96,12 @@ namespace BT1
 
                 kn.Execute(cmd); // Thực thi câu lệnh SQL
 
-                MessageBox.Show("Xóa thành công!");
+                MessageBox.Show("Delete successfully!");
                 btnLoad.PerformClick(); // Load lại dữ liệu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -114,7 +114,7 @@ namespace BT1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("error: " + ex.Message);
             }
         }
 

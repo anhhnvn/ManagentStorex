@@ -37,7 +37,7 @@ namespace BT1
 
                 // Thêm giao dịch mới vào cơ sở dữ liệu
                 purchaseHistory.AddPurchaseHistory(customerID, productID, employeeID, quantity, totalPrice);
-                MessageBox.Show("Giao dịch đã được thêm thành công!");
+                MessageBox.Show("The transaction has been added successfully.!");
 
                 // Tải lại lịch sử giao dịch của khách hàng
                 LoadCustomerHistory(customerID);

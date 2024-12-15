@@ -49,17 +49,12 @@
     <Compile Include="Class_Customers.cs" />
     <Compile Include="Class_DailySale.cs" />
     <Compile Include="Class_Employees.cs" />
+    <Compile Include="Class_Login.cs" />
     <Compile Include="Class_MonthlyProfit.cs" />
     <Compile Include="Class_Products.cs" />
     <Compile Include="Class_PurchaseHistory.cs" />
     <Compile Include="class_Roles.cs" />
     <Compile Include="Class_Users.cs" />
-    <Compile Include="DangNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DangNhap.Designer.cs">
-      <DependentUpon>DangNhap.cs</DependentUpon>
-    </Compile>
     <Compile Include="Employees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +73,23 @@
     <Compile Include="Form_DailySale.Designer.cs">
       <DependentUpon>Form_DailySale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_MonthlyProfit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_MonthlyProfit.Designer.cs">
       <DependentUpon>Form_MonthlyProfit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Products.Designer.cs">
+      <DependentUpon>Form_Products.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_PurchaseHistorys.cs">
       <SubType>Form</SubType>
@@ -97,29 +104,20 @@
       <DependentUpon>Form_Roles.cs</DependentUpon>
     </Compile>
     <Compile Include="KetNoi.cs" />
-    <Compile Include="Product.cs">
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrangChu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TrangChu.Designer.cs">
-      <DependentUpon>TrangChu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DangNhap.resx">
-      <DependentUpon>DangNhap.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Employees.resx">
       <DependentUpon>Employees.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,8 +127,14 @@
     <EmbeddedResource Include="Form_DailySale.resx">
       <DependentUpon>Form_DailySale.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_MonthlyProfit.resx">
       <DependentUpon>Form_MonthlyProfit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Products.resx">
+      <DependentUpon>Form_Products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PurchaseHistorys.resx">
       <DependentUpon>Form_PurchaseHistorys.cs</DependentUpon>
@@ -138,8 +142,8 @@
     <EmbeddedResource Include="Form_Roles.resx">
       <DependentUpon>Form_Roles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Product.resx">
-      <DependentUpon>Product.cs</DependentUpon>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,9 +154,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TrangChu.resx">
-      <DependentUpon>TrangChu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,7 +29,7 @@ namespace BT1
         {
             if (string.IsNullOrEmpty(txtRoleName.Text))
             {
-                MessageBox.Show("Vui lòng nhập tên vai trò.");
+                MessageBox.Show("Please enter a role name.");
                 return;
             }
 
@@ -37,13 +37,13 @@ namespace BT1
 
             if (_classRoles.AddRole(roleName))
             {
-                MessageBox.Show("Thêm vai trò thành công.");
+                MessageBox.Show("Add role success.");
                 LoadRoles(); // Cập nhật danh sách vai trò sau khi thêm
                 txtRoleName.Clear(); // Xóa TextBox
             }
             else
             {
-                MessageBox.Show("Lỗi khi thêm vai trò.");
+                MessageBox.Show("Error adding role.");
             }
         }
 
@@ -51,7 +51,7 @@ namespace BT1
         {
             if (dgvRoles.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn vai trò cần sửa.");
+                MessageBox.Show("Select the role that needs to be edited.");
                 return;
             }
 
@@ -60,19 +60,19 @@ namespace BT1
 
             if (string.IsNullOrEmpty(newRoleName))
             {
-                MessageBox.Show("Vui lòng nhập tên vai trò.");
+                MessageBox.Show("Please enter the role name.");
                 return;
             }
 
             if (_classRoles.EditRole(roleID, newRoleName))
             {
-                MessageBox.Show("Cập nhật vai trò thành công.");
+                MessageBox.Show("Update role success.");
                 LoadRoles(); // Cập nhật danh sách vai trò sau khi sửa
                 txtRoleName.Clear(); // Xóa TextBox
             }
             else
             {
-                MessageBox.Show("Lỗi khi sửa vai trò.");
+                MessageBox.Show("Error updating role.");
             }
         }
 
@@ -80,23 +80,23 @@ namespace BT1
         {
             if (dgvRoles.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn vai trò cần xóa.");
+                MessageBox.Show("Please select the role to delete.");
                 return;
             }
 
             int roleID = Convert.ToInt32(dgvRoles.SelectedRows[0].Cells["RoleID"].Value);
 
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa vai trò này?", "Xóa vai trò", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("You definitely want to delete this role?", "Delete Role", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 if (_classRoles.DeleteRole(roleID))
                 {
-                    MessageBox.Show("Xóa vai trò thành công.");
+                    MessageBox.Show("Delete role successfully.");
                     LoadRoles(); // Cập nhật danh sách vai trò sau khi xóa
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi khi xóa vai trò.");
+                    MessageBox.Show("Error delete role.");
                 }
             }
         }

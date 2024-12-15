@@ -31,13 +31,13 @@ namespace BT1
 
                 employees.Add_Employee(code, name, position, authority, userId);
 
-                MessageBox.Show("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Add employee succesfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadEmployees();
                 ClearInputFields();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thêm nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error adding employee: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -54,7 +54,7 @@ namespace BT1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading employees: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -91,13 +91,13 @@ namespace BT1
 
                 employees.Update_Employee(id, code, name, position, authority, userId);
 
-                MessageBox.Show("Cập nhật thông tin nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Update information employee successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadEmployees();
                 ClearInputFields();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi cập nhật thông tin nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error updating employee : " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -107,17 +107,17 @@ namespace BT1
             {
                 int id = int.Parse(dataGridView2.CurrentRow.Cells["EmployeeID"].Value.ToString());
 
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this role??", "confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     employees.Delete_Employee(id);
-                    MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Delete employee successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadEmployees();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xóa nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error deleting employee: " + ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -130,7 +130,7 @@ namespace BT1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tìm kiếm nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error searching employee: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

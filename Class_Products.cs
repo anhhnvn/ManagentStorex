@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BT1
@@ -9,8 +10,9 @@ namespace BT1
     {
         private string ProductName;
         private string ProductCode;
-        private int SellingPrice;
+        private decimal SellingPrice;
         private int InventoryQuantity;
+        private string ImagePath;
 
         KetNoi ob = new KetNoi();
 
@@ -18,12 +20,13 @@ namespace BT1
         public Class_Products() { }
 
         // Constructor có tham số
-        public Class_Products(string productCode, string productName, int sellingPrice, int inventoryQuantity)
+        public Class_Products(string productCode, string productName, decimal sellingPrice, int inventoryQuantity, string imagePath = "")
         {
             ProductCode = productCode;
             ProductName = productName;
             SellingPrice = sellingPrice;
             InventoryQuantity = inventoryQuantity;
+            ImagePath = imagePath;
         }
 
         // Load tất cả sản phẩm từ cơ sở dữ liệu
@@ -54,14 +57,15 @@ namespace BT1
                 return;
             }
 
-            string sql = "INSERT INTO Products (ProductCode, ProductName, SellingPrice, InventoryQuantity) " +
-                         "VALUES (@ProductCode, @ProductName, @SellingPrice, @InventoryQuantity)";
+            string sql = "INSERT INTO Products (ProductCode, ProductName, SellingPrice, InventoryQuantity, ImagePath) " +
+                         "VALUES (@ProductCode, @ProductName, @SellingPrice, @InventoryQuantity, @ImagePath)";
 
             SqlCommand cmd = new SqlCommand(sql, ob.conn);
             cmd.Parameters.AddWithValue("@ProductCode", ob1.ProductCode);
             cmd.Parameters.AddWithValue("@ProductName", ob1.ProductName);
             cmd.Parameters.AddWithValue("@SellingPrice", ob1.SellingPrice);
             cmd.Parameters.AddWithValue("@InventoryQuantity", ob1.InventoryQuantity);
+            cmd.Parameters.AddWithValue("@ImagePath", ob1.ImagePath);
 
             try
             {
@@ -78,13 +82,14 @@ namespace BT1
         public void Update(Class_Products ob1)
         {
             string sql = "UPDATE Products SET ProductName = @ProductName, SellingPrice = @SellingPrice, " +
-                         "InventoryQuantity = @InventoryQuantity WHERE ProductCode = @ProductCode";
+                         "InventoryQuantity = @InventoryQuantity, ImagePath = @ImagePath WHERE ProductCode = @ProductCode";
 
             SqlCommand cmd = new SqlCommand(sql, ob.conn);
             cmd.Parameters.AddWithValue("@ProductCode", ob1.ProductCode);
             cmd.Parameters.AddWithValue("@ProductName", ob1.ProductName);
             cmd.Parameters.AddWithValue("@SellingPrice", ob1.SellingPrice);
             cmd.Parameters.AddWithValue("@InventoryQuantity", ob1.InventoryQuantity);
+            cmd.Parameters.AddWithValue("@ImagePath", ob1.ImagePath);
 
             try
             {
@@ -124,8 +129,27 @@ namespace BT1
             cmd.Parameters.AddWithValue("@ProductCode", productCode);
             return ob.Load(sql); // Dùng phương thức Load để lấy dữ liệu
         }
+
+        // Lưu hình ảnh vào cơ sở dữ liệu
+        public void SaveImage(string productCode, string imagePath)
+        {
+            string sql = "UPDATE Products SET ImagePath = @ImagePath WHERE ProductCode = @ProductCode";
+            SqlCommand cmd = new SqlCommand(sql, ob.conn);
+            cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+            cmd.Parameters.AddWithValue("@ProductCode", productCode);
+
+            try
+            {
+                ob.Execute(cmd);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while saving image path: " + ex.Message);
+            }
+        }
     }
 }
+
 
 
 

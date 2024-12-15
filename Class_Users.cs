@@ -31,17 +31,18 @@ namespace BT1
             kn.Execute(cmd);
         }
 
-        // Cập nhật người dùng
-        public void Update_User(int userId, string username, string passwordHash, int roleId)
+        public void Update_User(int userId, string username, string password, int roleId)
         {
             string sql = "UPDATE Users SET Username = @Username, PasswordHash = @PasswordHash, RoleID = @RoleID WHERE UserID = @UserID";
             SqlCommand cmd = new SqlCommand(sql, kn.conn);
             cmd.Parameters.AddWithValue("@Username", username);
-            cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
+            cmd.Parameters.AddWithValue("@PasswordHash", password); // Lưu mật khẩu trực tiếp
             cmd.Parameters.AddWithValue("@RoleID", roleId);
             cmd.Parameters.AddWithValue("@UserID", userId);
-            kn.Execute(cmd);
+            kn.Execute(cmd);  // Gọi phương thức Execute để thực thi câu lệnh
         }
+
+
 
         // Xóa người dùng
         public void Delete_User(int userId)
